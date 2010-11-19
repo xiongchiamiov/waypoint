@@ -16,6 +16,8 @@ class Waypoints(object):
 	def add(self, name, section):
 		path = os.getcwd()
 		
+		if not self.config.has_section(section):
+			self.config.add_section(section)
 		self.config.set(section, name, path)
 		with open(self.configPath, 'w') as configFile:
 			self.config.write(configFile)
