@@ -1,4 +1,4 @@
 function waypoint {
-	python ~/Documents/waypoint/waypoint.py $1
+	python ~/Documents/waypoint/waypoint.py $@
 	source ~/.config/waypoint/scratch.sh
 }
