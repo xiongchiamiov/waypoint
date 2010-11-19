@@ -1,11 +1,20 @@
 import os
 import sys
 try:
-	from ConfigParser import SafeConfigParser
+	from ConfigParser import SafeConfigParser, NoOptionError, NoSectionError
 except ImportError:
 	# renamed in py3k
-	from configparser import SafeConfigParser
+	from configparser import SafeConfigParser, NoOptionError, NoSectionError
 from argparse import ArgumentParser
+
+def print_error(message):
+	'''Print `message` to stderr, in either py2k or py3k.'''
+	# This is really quite terrible, but without the exec statements, it won't
+	# compile.
+	try:
+		exec('print(message, file=sys.stderr)')
+	except SyntaxError:
+		exec('print >> sys.stderr, message')
 
 class Waypoints(object):
 	def __init__(self):
@@ -74,4 +83,9 @@ if __name__=='__main__':
 	args = parser.parse_args().__dict__
 	function = args['func']
 	del args['func']
-	function(**args)
+	try:
+		function(**args)
+	except NoOptionError as exception:
+		print_error(exception.message)
+	except NoSectionError as exception:
+		print_error(exception.message)
