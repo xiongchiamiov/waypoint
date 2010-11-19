@@ -19,6 +19,10 @@ class Waypoints(object):
 		self.config.set(section, name, path)
 		with open(self.configPath, 'w') as configFile:
 			self.config.write(configFile)
+		
+		# This is a quite hacky way of preventing the calling shell script from
+		# causing a cd to the current directory.
+		sys.exit(1)
 	
 	def goto(self, name, section):
 		path = self.config.get(section, name)
