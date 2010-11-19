@@ -12,3 +12,6 @@ function waypoint {
 # create the waypoint directory, if it doesn't exist
 mkdir -p ~/.config/waypoint
 touch ~/.config/waypoint/scratch.sh
+if [ ! -f ~/.config/waypoint/waypoint.config ]; then
+	echo '[default]' > ~/.config/waypoint/waypoint.config
+fi
