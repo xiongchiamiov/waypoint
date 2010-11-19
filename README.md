@@ -19,9 +19,8 @@ hacky spattering of ideas onto my screen. Don't use it if you're not aware of
 the Bad Things that can happen and are willing to accept those risks.
 
 If you really, really want to try this, you'll need to change the hard-coded
-paths to match your system, source the waypoint.sh in your .zshrc or .bashrc,
-and create the .config/waypoint directory. IIRC, you'll have to touch the
-scratch.sh file as well.
+path to waypoint.py in waypoint.sh so it matches your system and source the
+waypoint.sh in your .zshrc or .bashrc.
 
 # pushd and popd
 
