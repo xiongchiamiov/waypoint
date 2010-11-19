@@ -40,12 +40,12 @@ if __name__=='__main__':
 	
 	parser_add = subparsers.add_parser('add')
 	parser_add.add_argument('name', default='default', nargs='?')
-	parser_add.add_argument('section', default='DEFAULT', nargs='?')
+	parser_add.add_argument('section', default='default', nargs='?')
 	parser_add.set_defaults(func=waypoints.add)
 	
 	parser_goto = subparsers.add_parser('goto')
 	parser_goto.add_argument('name', default='default', nargs='?')
-	parser_goto.add_argument('section', default='DEFAULT', nargs='?')
+	parser_goto.add_argument('section', default='default', nargs='?')
 	parser_goto.set_defaults(func=waypoints.goto)
 	
 	# Because I didn't want to pass an argparse.Namespace to the functions and
