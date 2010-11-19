@@ -22,20 +22,20 @@ class Waypoints(object):
 		with open(self.configPath, 'w') as configFile:
 			self.config.write(configFile)
 		
-		# This is a quite hacky way of preventing the calling shell script from
-		# causing a cd to the current directory.
-		sys.exit(1)
 	
 	def goto(self, name, section):
 		path = self.config.get(section, name)
 		#os.chdir(path)
 		with open(os.path.expanduser('~/.config/waypoint/scratch.sh'), 'w') as file:
 			file.write('cd %s' % path)
+		
+		# tell waypoint.sh that it needs to source scratch.sh
+		sys.exit(0)
 	
 	def list(self, section, name):
 		if name:
 			print("%s = %s" % (name, self.config.get(section, name)))
-			sys.exit(1)
+			return
 		
 		if section:
 			sections = [section]
@@ -47,8 +47,6 @@ class Waypoints(object):
 			for key, value in self.config.items(section):
 				print("%s = %s" % (key, value))
 			print('')
-		
-		sys.exit(1)
 
 if __name__=='__main__':
 	waypoints = Waypoints()
@@ -80,3 +78,7 @@ if __name__=='__main__':
 	function = args['func']
 	del args['func']
 	function(**args)
+
+	# This is a quite hacky way of preventing the calling shell script from
+	# causing a cd to the current directory.
+	sys.exit(1)
