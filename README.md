@@ -18,9 +18,8 @@ really recommend you use it, even after it's finished, and right now it's a
 hacky spattering of ideas onto my screen. Don't use it if you're not aware of
 the Bad Things that can happen and are willing to accept those risks.
 
-If you really, really want to try this, you'll need to change the hard-coded
-path to waypoint.py in waypoint.sh so it matches your system and source the
-waypoint.sh in your .zshrc or .bashrc.
+If you really, really want to try this, take a look at the instructions in
+`waypoint.sh`.
 
 # pushd and popd
 
