@@ -23,6 +23,16 @@ paths to match your system, source the waypoint.sh in your .zshrc or .bashrc,
 and create the .config/waypoint directory. IIRC, you'll have to touch the
 scratch.sh file as well.
 
+# pushd and popd
+
+Shortly after starting this, [raylu] brought [pushd and popd] to my attention.
+They're pretty cool, I must say, but [popd] doesn't seem to have the kind of
+name-specified path-popping that I want. That said, if you just want to build a
+stack of paths and rewind back down, go use those instead of waypoint.
+
 
 [0]: http://stackoverflow.com/questions/2375003/how-do-i-set-the-working-directory-of-the-parent-process/2375174#2375174
 [voodoo magic]: http://ajdiaz.wordpress.com/2008/02/09/bash-ini-parser/
+[raylu]: https://github.com/raylu
+[pushd and popd]: http://en.wikipedia.org/wiki/Pushd_and_popd
+[popd]: http://ss64.com/bash/popd.html
