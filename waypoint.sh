@@ -6,8 +6,9 @@
 function waypoint {
 	python "$WAYPOINT_DIRECTORY"/waypoint.py $@ &&
 	source ~/.config/waypoint/scratch.sh
-	echo /dev/null > ~/.config/waypoint/scratch.sh
+	cat /dev/null > ~/.config/waypoint/scratch.sh
 }
 
 # create the waypoint directory, if it doesn't exist
 mkdir -p ~/.config/waypoint
+touch ~/.config/waypoint/scratch.sh
