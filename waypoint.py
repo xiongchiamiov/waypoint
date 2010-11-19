@@ -31,6 +31,24 @@ class Waypoints(object):
 		#os.chdir(path)
 		with open(os.path.expanduser('~/.config/waypoint/scratch.sh'), 'w') as file:
 			file.write('cd %s' % path)
+	
+	def list(self, section, name):
+		if name:
+			print("%s = %s" % (name, self.config.get(section, name)))
+			sys.exit(1)
+		
+		if section:
+			sections = [section]
+		else:
+			sections = self.config.sections()
+		
+		for section in sections:
+			print("[%s]" % section)
+			for key, value in self.config.items(section):
+				print("%s = %s" % (key, value))
+			print('')
+		
+		sys.exit(1)
 
 if __name__=='__main__':
 	waypoints = Waypoints()
@@ -47,6 +65,11 @@ if __name__=='__main__':
 	parser_goto.add_argument('name', default='default', nargs='?')
 	parser_goto.add_argument('section', default='default', nargs='?')
 	parser_goto.set_defaults(func=waypoints.goto)
+	
+	parser_list = subparsers.add_parser('list')
+	parser_list.add_argument('section', default=None, nargs='?')
+	parser_list.add_argument('name', default=None, nargs='?')
+	parser_list.set_defaults(func=waypoints.list)
 	
 	# Because I didn't want to pass an argparse.Namespace to the functions and
 	# have to access everything through args.foo, we pull out the values as a
