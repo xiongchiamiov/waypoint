@@ -30,7 +30,14 @@ class Waypoints(object):
 		self.config.set(section, name, path)
 		with open(self.configPath, 'w') as configFile:
 			self.config.write(configFile)
-		
+	
+	def remove(self, name, section):
+		self.config.remove_option(section, name)
+		# Did we remove the last option in a section?
+		if not self.config.options(section):
+			self.config.remove_section(section)
+		with open(self.configPath, 'w') as configFile:
+			self.config.write(configFile)
 	
 	def goto(self, name, section):
 		path = self.config.get(section, name)
@@ -64,6 +71,11 @@ if __name__=='__main__':
 	parser_add.add_argument('name', default='default', nargs='?')
 	parser_add.add_argument('section', default='default', nargs='?')
 	parser_add.set_defaults(func=waypoints.add)
+	
+	parser_remove = subparsers.add_parser('rm')
+	parser_remove.add_argument('name', default='default', nargs='?')
+	parser_remove.add_argument('section', default='default', nargs='?')
+	parser_remove.set_defaults(func=waypoints.remove)
 	
 	parser_goto = subparsers.add_parser('goto')
 	parser_goto.add_argument('name', default='default', nargs='?')
