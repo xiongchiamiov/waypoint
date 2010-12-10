@@ -13,10 +13,9 @@ files and `cd` to the appropriate directory, and then `source` that file.
 
 I chose option 3.
 
-This is a terribly hacky solution - no, seriously, this is terrible. I wouldn't
-really recommend you use it, even after it's finished, and right now it's a
-hacky spattering of ideas onto my screen. Don't use it if you're not aware of
-the Bad Things that can happen and are willing to accept those risks.
+This is a terribly hacky solution - no, seriously, this is terrible. Don't use
+it if you're not aware of the Bad Things that can happen and are willing to
+accept those risks.
 
 If you really, really want to try this, take a look at the instructions in
 `waypoint.sh`.
