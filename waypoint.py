@@ -28,22 +28,31 @@ class Waypoints(object):
 		if not self.config.has_section(section):
 			self.config.add_section(section)
 		self.config.set(section, name, path)
-		with open(self.configPath, 'w') as configFile:
+		try:
+			configFile = open(self.configPath, 'w')
 			self.config.write(configFile)
+		finally:
+			configFile.close()
 	
 	def remove(self, name, section):
 		self.config.remove_option(section, name)
 		# Did we remove the last option in a section?
 		if not self.config.options(section):
 			self.config.remove_section(section)
-		with open(self.configPath, 'w') as configFile:
+		try:
+			configFile = open(self.configPath, 'w')
 			self.config.write(configFile)
+		finally:
+			configFile.close()
 	
 	def goto(self, name, section):
 		path = self.config.get(section, name)
 		#os.chdir(path)
-		with open(os.path.expanduser('~/.config/waypoint/scratch.sh'), 'w') as file:
+		try:
+			file = open(os.path.expanduser('~/.config/waypoint/scratch.sh'), 'w')
 			file.write('cd %s' % path)
+		finally:
+			file.close()
 	
 	def list(self, section, name):
 		if name:
@@ -97,7 +106,7 @@ if __name__=='__main__':
 	del args['func']
 	try:
 		function(**args)
-	except NoOptionError as exception:
+	except NoOptionError, exception:
 		print_error(exception.message)
-	except NoSectionError as exception:
+	except NoSectionError, exception:
 		print_error(exception.message)
