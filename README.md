@@ -27,9 +27,14 @@ They're pretty cool, I must say, but [popd] doesn't seem to have the kind of
 name-specified path-popping that I want. That said, if you just want to build a
 stack of paths and rewind back down, go use those instead of waypoint.
 
+# Bashmarks
+
+Huy Nguyen made a similar system called [Bashmarks].  It looks better off than mine.
+
 
 [0]: http://stackoverflow.com/questions/2375003/how-do-i-set-the-working-directory-of-the-parent-process/2375174#2375174
 [voodoo magic]: http://ajdiaz.wordpress.com/2008/02/09/bash-ini-parser/
 [raylu]: https://github.com/raylu
 [pushd and popd]: http://en.wikipedia.org/wiki/Pushd_and_popd
 [popd]: http://ss64.com/bash/popd.html
+[Bashmarks]: https://github.com/huyng/bashmarks
